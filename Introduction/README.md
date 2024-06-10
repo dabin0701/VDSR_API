@@ -5,11 +5,14 @@
 
 > 이미지 출처 : https://www.youtube.com/@NatGeo/videos
 
-> ### <2011년 National GeoGraphic /최대 화질 480p> 
-> ![image](https://github.com/dabin0701/VDSR_API/assets/144203473/af2d6ebf-e184-4d7c-8c27-3284a2407dcc)
-
+> ### <2017년 National GeoGraphic /최대 화질 480p> 
+> ![Video Label]([https://github.com/dabin0701/VDSR_API/assets/144203473/af2d6ebf-e184-4d7c-8c27-3284a2407dcc](https://youtu.be/qyrS7TQnoAo?si=9HsdAODsAok_a8nc])
+>
+> 인물의 얼굴이 흐릿하게 보이며, 영상의 크기도 비교적 작다.
 > ### <2024년 National GeoGraphic /최대 화질1080p>
-> ![image](https://github.com/dabin0701/VDSR_API/assets/144203473/b22d0cd9-f459-402c-800d-795d74085d57)
+> ![Video Label]([https://github.com/dabin0701/VDSR_API/assets/144203473/b22d0cd9-f459-402c-800d-795d74085d57](https://youtu.be/54tSsXNjpgA?si=3H9YQXYKCqpDpIiD))
+> 
+> 동물의 털질감과 수염이 잘 보이며 깨지는 현상 없이 마치 직접 눈으로 관찰한 듯한 고화질의 영상이다다.
 
 저화질 이미지가 고화질로 변경되는 구조에 대한 궁금증으로 인해 해당 프로젝트 주제로 선정하게 되었고, 화질 개선에 특화된 모델인 VDSR(Very Deep Super Resolution)을 적용하여 저화질 이미지를 고화질 이미지로 업샘플링 하는 것을 목적으로 한다.
 
