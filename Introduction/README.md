@@ -18,7 +18,10 @@
 VDSR의 기존 구조를 개선하여 중간평가때 보다 높은 성능의 모델을 만들었다.
 
 <기존 VDSR 구조 >
+![image](https://github.com/dabin0701/VDSR_API/blob/main/VDSR_1.png)
 
+<개선 한 VDSR 구조>
+![image](https://github.com/dabin0701/VDSR_API/blob/main/VDSR_0.png)
 #### 성능평가 과정
 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로 늘려 저화질 이미지를 추출한다. 
 추출 된 Validation의 bicubic과 VDSR의 PSNR 수치를 비교하여 Model의 성능을 확인한다.
