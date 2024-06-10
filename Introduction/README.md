@@ -5,7 +5,8 @@
 
 > 이미지 출처 : https://www.youtube.com/@NatGeo/videos
 
-> ### <2017년 National GeoGraphic /최대 화질 480p> 
+> ### <2017년 National GeoGraphic /최대 화질 480p>
+> 그냥 이미지로 넣자잉 ... 굳이 영상 넣는데 시간 쓰지 말기
 > ![Video Label]([https://github.com/dabin0701/VDSR_API/assets/144203473/af2d6ebf-e184-4d7c-8c27-3284a2407dcc](https://youtu.be/qyrS7TQnoAo?si=9HsdAODsAok_a8nc])
 >
 > 인물의 얼굴이 흐릿하게 보이며, 영상의 크기도 비교적 작다.
@@ -20,11 +21,12 @@
 ### 필요한 라이브러리(버전) 또는 프로그램 목록
 VDSR 모델 구현을 위해 ‘twtygqyy’가 구현한 코드를 불러왔고, 
 주소 https://github.com/twtygqyy/pytorch-vdsr/blob/master/vdsr.py  
-Train data -
-validation data - NationalgeoGraphic
-Test dataSet - 'Set5'
+
 ***
-### Data set
+### Data set 출처 및 설명
+Train dataset -
+Validation dataset - NationalgeoGraphic
+Test dataset -
 ***
 ### 모델 설명
 VDSR의 기존 구조를 개선하여 중간 평가때 보다 높은 성능의 모델을 만들었다.
