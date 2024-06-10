@@ -14,7 +14,16 @@
 저화질 이미지가 고화질로 변경되는 구조에 대한 궁금증으로 인해 해당 프로젝트 주제로 선정하게 되었고, 화질 개선에 특화된 모델인 VDSR(Very Deep Super Resolution)을 적용하여 저화질 이미지를 고화질 이미지로 업샘플링 하는 것을 목적으로 한다.
 
 ***
-### 프로젝트 개요
+### 필요한 라이브러리(버전) 또는 프로그램 목록
+VDSR 모델 구현을 위해 ‘twtygqyy’가 구현한 코드를 불러왔고, 
+주소 https://github.com/twtygqyy/pytorch-vdsr/blob/master/vdsr.py  
+Train data -
+validation data - NationalgeoGraphic
+Test dataSet - 'Set5'
+***
+### Data set
+***
+### 모델 설명
 VDSR의 기존 구조를 개선하여 중간 평가때 보다 높은 성능의 모델을 만들었다.
 Matle Lab을 이용하여 '91 datadet'을 196,560개의 이미지로 증강한 후 'h5' 형식으로 변환하여 학습한다.
 
@@ -25,14 +34,9 @@ Matle Lab을 이용하여 '91 datadet'을 196,560개의 이미지로 증강한 �
 > ![image](https://github.com/dabin0701/VDSR_API/blob/main//Introduction/VDSR_0.png)
 
 ### 성능평가 과정
-원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로 늘려 저화질 이미지를 추출한다. 
+Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로 늘려 저화질 이미지를 추출한다. 
 추출 된 Validation의 bicubic과 VDSR의 PSNR 수치를 비교하여 Model의 성능을 확인한다.
 ***
-### 필요한 라이브러리(버전) 또는 프로그램 목록
-VDSR 모델 구현을 위해 ‘twtygqyy’가 구현한 코드를 불러왔고, 
-주소 https://github.com/twtygqyy/pytorch-vdsr/blob/master/vdsr.py  
-Train data -
-validation data - NationalgeoGraphic
-Test dataSet - 'Set5'
+## 실험 결과
 ***
-### 추후 개선 사항 : 추가로 개선해야할 내용에 대해 정리 또는 프로젝트 한계점 설명
+## 추후 개선 사항 : 추가로 개선해야할 내용에 대해 정리 또는 프로젝트 한계점 설명
