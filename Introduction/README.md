@@ -15,14 +15,16 @@
 
 ***
 ### 프로젝트 개요
-VDSR의 기존 구조를 개선하여 중간평가때 보다 높은 성능의 모델을 만들었다.
+VDSR의 기존 구조를 개선하여 중간 평가때 보다 높은 성능의 모델을 만들었다.
+Matle Lab을 이용하여 '91 datadet'을 196,560개의 이미지로 증강한 후 'h5' 형식으로 변환하여 학습한다.
 
-<기존 VDSR 구조 >
-![image](https://github.com/dabin0701/VDSR_API/blob/main/VDSR_1.png)
+> ## <기존 VDSR 구조 >
+> ![image](https://github.com/dabin0701/VDSR_API/blob/main//Introduction/VDSR_1.png)
 
-<개선 한 VDSR 구조>
-![image](https://github.com/dabin0701/VDSR_API/blob/main/VDSR_0.png)
-#### 성능평가 과정
+> ## <개선 한 VDSR 구조>
+> ![image](https://github.com/dabin0701/VDSR_API/blob/main//Introduction/VDSR_0.png)
+
+### 성능평가 과정
 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로 늘려 저화질 이미지를 추출한다. 
 추출 된 Validation의 bicubic과 VDSR의 PSNR 수치를 비교하여 Model의 성능을 확인한다.
 ***
