@@ -84,7 +84,6 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 ## 실험 결과
 <첫 번째 실험> 
 - Repeat num(residual 반복 횟수)를 정하여 12번,18번,24번,30번 반복하였을 때 가장 성능이 좋은 모델을 선택
-- NationalGEO Validation일 때 세 실험 중 가장 낮은 PSNR 수치를 가짐 
 
   - ↓ National_GEO Validation ↓
 
@@ -94,7 +93,7 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 | 3x | 31.3486 | 28.4402  | -2.9084 |
 | 4x | 29.1305 | 28.759530 | -0.3709 |
 
-<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Introduction/1788.jpg"  width="200" height="200"/>
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/mainIntroduction/National_Demo_2x.png"  width="200" height="200"/>
 
 - Flower Validation으로 data set을 변경했을 때의 결과는 매우 개선 됨
 - 낮은 성능의 원인 :Train data로 학습한 이미지와(꽃과 자연) Validation data의(동물과 인물) 이미지의 결이 맞지 않았기 때문
