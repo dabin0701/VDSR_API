@@ -96,11 +96,13 @@ Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로
 | 3x | 31.3486 | 31.994 | 0.645645 |
 | 4x | 29.1305 | 29.4922 | 0.36174 |
 
+
 <p>
-  <img src='Set5/butterfly_GT.bmp' height='200' width='200'/>
-  <img src='result/input.bmp' height='200' width='200'/>
-  <img src='result/output.bmp' height='200' width='200'/>
+  <img src='Introduction/R_Bn_GT.png' height='200' width='200'/>
+  <img src='Introduction/R_Bn_Bicubic.png' height='200' width='200'/>
+  <img src='Introduction/R_Bn_VDSR.png' height='200' width='200'/>
 </p>
+
 
 ***
 ## 추후 개선 사항 : 추가로 개선해야할 내용에 대해 정리 또는 프로젝트 한계점 설명
