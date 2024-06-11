@@ -6,17 +6,54 @@
 > 이미지 출처 : https://www.youtube.com/@NatGeo/videos
 
 > ### <2017년 National GeoGraphic /최대 화질 480p>
-> 그냥 이미지로 넣자잉 ... 굳이 영상 넣는데 시간 쓰지 말기
 > ![Image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/National_1.png?raw=true)
 > 
 > 인물의 얼굴이 흐릿하게 보이며, 영상의 크기도 비교적 작다.
-> ### <2024년 National GeoGraphic /최대 화질1080p>
-> ![Image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/National_0.png?raw=true)
 > 
-> 동물의 털질감과 수염이 잘 보이며 깨지는 현상 없이 마치 직접 눈으로 관찰한 듯한 고화질의 영상이다다.
+> ### <2024년 National GeoGraphic /최대 화질1080p>
+> ![Image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/National_2.png?raw=true)
+> 
+> 동물의 털질감과 수염이 잘 보이며 깨지는 현상 없이 마치 직접 눈으로 관찰한 듯한 고화질의 이미지다.
 
 저화질 이미지가 고화질로 변경되는 구조에 대한 궁금증으로 인해 해당 프로젝트 주제로 선정하게 되었고, 화질 개선에 특화된 모델인 VDSR(Very Deep Super Resolution)을 적용하여 저화질 이미지를 고화질 이미지로 업샘플링 하는 것을 목적으로 한다.
+***
+## 프로젝트 개요
+1. VDSR의 residual 반복 횟수 별 성능
 
+2. Relu와 Conv2d layer 사이에 BatchNorm2d layer 적용 성능
+  
+3. Residual block + BatchNorm2d 적용하였을 때의 성능
+
+<첫 번째 실험> 
+- 세 실험 중 가장 낮은 PSNR 수치 
+- 원인 : Train data로 학습한 이미지와(꽃과 자연) Validation data의(동물과 인물) 이미지의 결이 맞지 않았기 때문이다.
+- 
+|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+| ------------ |:---------------------:| ---------:|------------:|
+| 2x | 34.4860 | 35.3869 | 0.90097 |
+| 3x | 31.3486 | 30.13440 | -1.21422 |
+| 4x | 29.1305 | 27.641924 | -1.488590 |
+
+<두 번째 실험>
+- Validation data를 꽃이 개화하는 이미지로 하여, 학습한 이미지와 결이 맞게하였다.
+- 1번 실험보다는 좋은 성능을 보였으나 높은 성능을 보이지 않았다.
+- 
+|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+| ------------ |:---------------------:| ---------:|------------:|
+| 2x | 34.4860 | 35.3869 | 0.90097 |
+| 3x | 31.3486 | 30.13440 | -1.21422 |
+| 4x | 29.1305 | 27.641924 | -1.488590 |
+
+<세 번째 실험>
+- 위 세가지 실험 후 가장 높은 성능의 모델
+- 두 번째 실험의 성능을 높이기 위해 Residual block에 BatchNorm2d 적용하였다.
+- 코드 배포자 ‘twtygqyy’가 구현한 VDSR의 PSNR 수치에 가장 가깝게 성능을 낸 모델이다.
+  
+|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+| ------------ |:---------------------:| ---------:|------------:|
+| 2x | 34.4860 | 36.1943 | 1.7083 |
+| 3x | 31.3486 | 31.994 | 0.645645 |
+| 4x | 29.1305 | 29.4922 | 0.36174 |
 ***
 ### 필요한 라이브러리(버전) 또는 프로그램 목록
 VDSR 모델 구현을 위해 ‘twtygqyy’가 구현한 코드를 불러왔고, 
@@ -25,10 +62,10 @@ VDSR 모델 구현을 위해 ‘twtygqyy’가 구현한 코드를 불러왔고,
 ***
 ### Data set 출처 및 설명
 Train dataset -
-Validation dataset - NationalgeoGraphic
+Validation dataset - NationalgeoGraphic(https://www.youtube.com/@NatGeo/videos) 영상 프레임 추출
 Test dataset -
 ***
-### 모델 설명
+### 모델 설명 및 선택 이유
 VDSR의 기존 구조를 개선하여 중간 평가때 보다 높은 성능의 모델을 만들었다.
 Matle Lab을 이용하여 '91 datadet'을 196,560개의 이미지로 증강한 후 'h5' 형식으로 변환하여 학습한다.
 
@@ -45,3 +82,4 @@ Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로
 ## 실험 결과
 ***
 ## 추후 개선 사항 : 추가로 개선해야할 내용에 대해 정리 또는 프로젝트 한계점 설명
+- 기존 VDSR의 성능 보다 모두 PSNR 수치가 낮게 측정 되었다.
