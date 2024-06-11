@@ -80,23 +80,24 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 </p>
 
 ***
-  
 ## 실험 결과
 <첫 번째 실험> 
-- Repeat num(residual 반복 횟수)를 정하여 12번,18번,24번,30번 반복하였을 때 가장 성능이 좋은 모델을 선택
-
+- Repeat num(residual 반복 횟수)를 정하여 12번,18번,24번,30번 반복하였을 때 가장 성능이 좋은 모델을 선택 -> repeat num =30 인 모델
+- 중간 평가때 Validation data를 National_GEO를 적용한 것까지 발표
   - ↓ National_GEO Validation ↓
 
 |Scale| Bicubic  PSNR|VDSR PSNR|VDSR-Bicubic|
 | ------------ |:---------------------:| ---------:|------------:|
-| 2x | 34.4860 | 29.9504 | -4.5356 |
-| 3x | 31.3486 | 28.4402  | -2.9084 |
-| 4x | 29.1305 | 28.759530 | -0.3709 |
+| 2x | 34.4860 | 37.299 | 2.813 |
+| 3x | 31.3486 | 33.555  | 2.207 |
+| 4x | 29.1305 | 31.2850 | 2.155 |
 
-<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/mainIntroduction/National_Demo_2x.png"  width="200" height="200"/>
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Introduction/National_Demo_2x.png"  width="600" height="250"/>
 
-- Flower Validation으로 data set을 변경했을 때의 결과는 매우 개선 됨
-- 낮은 성능의 원인 :Train data로 학습한 이미지와(꽃과 자연) Validation data의(동물과 인물) 이미지의 결이 맞지 않았기 때문
+***
+## 중간 평가 이후 개선
+- Flower Validation으로 data set을 변경했을 때 결과 이미지의 성능이 개선되길 기대하여 적용
+- 낮은 화질의 결과 이미지 원인 :Train data로 학습한 이미지와(꽃과 자연) Validation data의(동물과 인물) 이미지의 결이 맞지 않았기 때문
 - 하지만 해당 모델은 loss가 238.519로 매우 높고, 4배일 때의 성능이 -(마이너스)이이기 때문에 좋은 모델은 아니라 판단
   - ↓ Flower Validation ↓
 
