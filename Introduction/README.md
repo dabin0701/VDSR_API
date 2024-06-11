@@ -64,27 +64,27 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 </p>
 
 ***
-### 모델 설명 및 선택 이유
-VDSR의 기존 구조를 개선하여, 중간 평가때 보다 높은 성능의 모델을 만들었다.
-Matle Lab을 이용하여 '91 datadet'을 196,560개의 이미지로 증강한 후 'h5' 형식으로 변환하여 학습한다.
+### VDSR(Very Deep Super-Resolution) 설명
+- Super Resolution의 종류 중 VDSR은 20개의 깊은 신경망 레이어를 사용하여 저해상도 이미지를 고해상도로 변환하는 알고리즘이다. 잔차 학습(Residual Learning)을 통해 빠르고 효율적으로 고품질의 이미지를 복원할 수 있는 모델이다.
+
+- VDSR은 20개의 레이어로 구성된 깊은 신경망을 사용하기 때문에 더 복잡하고 섬세한 특징들을 학습할 수 있게 하여 고해상도 이미지를 더 정교하게 복원할 수 있으며, 잔차 학습을 활용하여 기울기 소실 문제를 해결한다는 장점이있다. 또한 SRCNN이나 Resnet과 같은 모델보다도 가볍고 간단한 구조를 가지지만 높은 성능을 보이기 때문에 VDSR 모델을 선택하게 되었다.
 
 > ## <기존 VDSR 구조 >
-> ![image](https://github.com/dabin0701/VDSR_API/blob/main//Introduction/VDSR_1.png)
+> <p align="center">
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Introduction/VDSR_1.png"  width="600" height="350"/>
+</p>
 
 > ## <개선 한 VDSR 구조>
-> ![image](https://github.com/dabin0701/VDSR_API/blob/main//Introduction/VDSR_0.png)
+> > <p align="center">
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Introduction/VDSR_0.png"  width="600" height="350"/>
+</p>
 
-### 성능평가 과정
-Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로 늘려 저화질 이미지를 추출한다. 
-추출 된 Validation의 bicubic과 VDSR의 PSNR 수치를 비교하여 Model의 성능을 확인한다.
 ***
 ## 실험 결과
 <첫 번째 실험> 
-- NationalGEO Validation일 때 세 실험 중 가장 낮은 PSNR 수치 
-- 원인 : Train data로 학습한 이미지와(꽃과 자연) Validation data의(동물과 인물) 이미지의 결이 맞지 않았기 때문이다.
-- 이를 해결하기 위해 Validation을 Flower로 변경 -> 매우 높은 성능을 나타냄
-- 하지만 4배 줄였던 vdsr의 PSNR 수치가 개선되지 않았기 때문에 최종 모델로 선택되지 못함.
-  
+- Repeat num(residual 반복 횟수)를 정하여 12번,18번,24번,30번 반복하였을 때 가장 성능이 좋은 모델을 선택
+- NationalGEO Validation일 때 세 실험 중 가장 낮은 PSNR 수치를 가짐 
+
   - ↓ National_GEO Validation ↓
   
 |Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
@@ -93,6 +93,11 @@ Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로
 | 3x | 31.3486 | 28.4402  | -2.9084 |
 | 4x | 29.1305 | 28.759530 | -0.3709 |
 
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Introduction/1788.jpg"  width="200" height="200"/>
+
+- Flower Validation으로 data set을 변경했을 때의 결과는 매우 개선 됨
+- 낮은 성능의 원인 :Train data로 학습한 이미지와(꽃과 자연) Validation data의(동물과 인물) 이미지의 결이 맞지 않았기 때문
+- 하지만 해당 모델은 loss가 238.519로 매우 높고, 4배일 때의 성능이 -(마이너스)이이기 때문에 좋은 모델은 아니라 판단
   - ↓ Flower Validation ↓
 
 |Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
@@ -101,9 +106,12 @@ Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로
 | 3x | 31.3486 | 32.2266 | 0.8780 |
 | 4x | 29.1305 | 28.955213 | -0.17530 |
 
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Validation_dataset/u581.jpg"  width="200" height="200"/>
+
 <두 번째 실험>
-- Validation data를 꽃이 개화하는 이미지로 하여, 학습한 이미지와 결이 맞게하였다.
-- 1번 실험보다는 좋은 성능을 보였으나 높은 성능을 보이지 않았다.
+- Repeat num(residual 반복 횟수)를 정하여 12번,18번,24번,30번 반복하였을 때 가장 성능이 좋은 모델을 선택
+- Relu와 Cnn 사이에 BatchNorm2d를 추가
+- 첫 번째 모델의 성능보다 낮은 수준의 성능
 
   - ↓ Flower Validation ↓
   
@@ -114,10 +122,10 @@ Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로
 | 4x | 29.1305 | 27.641924 | -1.488590 |
 
 <세 번째 실험>
-- 위 세가지 실험 후 가장 높은 성능의 모델
-- 두 번째 실험의 성능을 높이기 위해 Residual block에 BatchNorm2d 적용하였다.
-- 코드 배포자 ‘twtygqyy’가 구현한 VDSR의 PSNR 수치에 가장 가깝게 성능을 낸 모델이다.
-
+- 위의 두 실험 중 가장 낮은 loss 92.69, 2배,3배,4배 이미지 모두 개선 된 성능의 모델
+- 두 번째 실험의 성능을 높이기 위해 Residual block에 BatchNorm2d 적용
+- 코드 배포자 ‘twtygqyy’가 구현한 VDSR의 PSNR 수치에 가장 가깝게 성능을 낸 모델
+- ‘twtygqyy’의 2배 PSNR 성능 = 37.65 -> 1.46 차이
   - ↓ Flower Validation ↓
 
 |Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
@@ -127,17 +135,24 @@ Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로
 | 4x | 29.1305 | 29.4922 | 0.36174 |
 
 ![image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/R_Bn_2x.png?raw=true)
+## ↓↓↓ 위 이미지 확대 모습 ↓↓↓ 
 
-## 순서대로 GT -BICUBIC -VDSR
+순서대로 (GT -BICUBIC -VDSR) 
 
 ![image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/R_Bn_GT.png?raw=true)
 ![image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/R_Bn_Bicubic.png?raw=true)
 ![image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/R_Bn_VDSR.png?raw=true)
 
-
+***
+## RESULT
+가장 높은 성능을 나타낸 3번 모델
+|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+| ------------ |:---------------------:| ---------:|------------:|
+| 2x | 34.4860 | 36.1943 | 1.7083 |
+| 3x | 31.3486 | 31.994 | 0.645645 |
+| 4x | 29.1305 | 29.4922 | 0.36174 |
 ***
 ## 추후 개선 사항 : 추가로 개선해야할 내용에 대해 정리 또는 프로젝트 한계점 설명
-- Ablation Study
-
-- 
+- Ablation Study 작성
 - 기존 VDSR의 성능 보다 모두 PSNR 수치가 낮게 측정 되었다.
+- PSNR와 SSIM을 함께 적용해보았음 좋았을 듯
