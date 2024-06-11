@@ -7,11 +7,11 @@
 
 > ### <2017년 National GeoGraphic /최대 화질 480p>
 > 그냥 이미지로 넣자잉 ... 굳이 영상 넣는데 시간 쓰지 말기
-> ![Video Label]([https://github.com/dabin0701/VDSR_API/assets/144203473/af2d6ebf-e184-4d7c-8c27-3284a2407dcc](https://youtu.be/qyrS7TQnoAo?si=9HsdAODsAok_a8nc])
+> ![Image](Introduction/National_1.png)
 >
 > 인물의 얼굴이 흐릿하게 보이며, 영상의 크기도 비교적 작다.
 > ### <2024년 National GeoGraphic /최대 화질1080p>
-> ![Video Label]([https://github.com/dabin0701/VDSR_API/assets/144203473/b22d0cd9-f459-402c-800d-795d74085d57](https://youtu.be/54tSsXNjpgA?si=3H9YQXYKCqpDpIiD))
+> ![Image](Introduction/National_0.png)
 > 
 > 동물의 털질감과 수염이 잘 보이며 깨지는 현상 없이 마치 직접 눈으로 관찰한 듯한 고화질의 영상이다다.
 
