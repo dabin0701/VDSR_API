@@ -97,11 +97,12 @@ Validaion의 원본 이미지를 2배,3배,4배로 줄였다가 원본 크기로
 | 4x | 29.1305 | 29.4922 | 0.36174 |
 
 ![image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/R_Bn_2x.png?raw=true)
-<p>
-  <img src='Introduction/R_Bn_GT.png' height='200' width='200'/>
-  <img src='Introduction/R_Bn_Bicubic.png' height='200' width='200'/>
-  <img src='Introduction/R_Bn_VDSR.png' height='200' width='200'/>
-</p>
+
+## 순서대로 GT -BICUBIC -VDSR
+
+![image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/R_Bn_GT.png?raw=true)
+![image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/R_Bn_Bicubic.png?raw=true)
+![image](https://github.com/dabin0701/VDSR_API/blob/main/Introduction/R_Bn_VDSR.png?raw=true)
 
 
 ***
