@@ -31,7 +31,73 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 - ‘twtygqyy’가 구현한 VDSR 모델 코드
   깃허브 주소 : https://github.com/twtygqyy/pytorch-vdsr/blob/master/vdsr.py
   
-- lib의 원인 :Train data로 학습한 이미지와(꽃과 자연) Validation data의(동물과 인물) 이미지의 결이 맞지 않았기 때문
+- library list
+
+<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/pytorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white"> <img src="https://img.shields.io/badge/numpy-013243?style=for-the-badge&logo=numpy&logoColor=white">
+<img src="https://img.shields.io/badge/pillow-60C65F?style=for-the-badge&logo=pillow&logoColor=white"> <img src="https://img.shields.io/badge/matplotlib-019933?style=for-the-badge&logo=matplotlib&logoColor=white">
+<img src="https://img.shields.io/badge/opencv-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white"> <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white"> <img src="https://img.shields.io/badge/tqdm-4B8BBE?style=for-the-badge&logo=tqdm&logoColor=white">
+
+***
+### Data set 출처 및 설명
+- Train dataset - T91 dataset(https://www.kaggle.com/datasets/ll01dm/t91-image-dataset)
+
+: 해당 이미지는 초해상도를 위해 신경망을 훈련하는 데 일반적으로 사용되는 91개의 꽃 이미지로 대부분의 이미지는 잘린 꽃 이미지다. 해당 data set을 선택한 이유는 잘린 이미지가 다양한 크기, 비율, 위치에서 추출되었기 때문에 원본 이미지에서 얻을 수 있는 다양한 시각적 패턴을 제공하기 때문에 모델이 다양한 상황에서 고해상도 이미지를 복원하는 능력을 향상시키는 데 도움을 줄 것이라 예측하여 T91 data set을 선택하게 되었다.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Train_dataset/000t1.bmp"  width="200" height="200"/>
+</p>
+
+- Validation dataset - NationalgeoGraphic(https://www.youtube.com/@NatGeo/videos)
+
+: 해당 데이터 셋은 Nationageograpich에서 제공하는 꽃이 개화하는 영상이다. Train dataset이 꽃이기 때문에 모델의 학습 효과를 확인하기 위해 Validation data set을 꽃으로 선택했다.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Validation_dataset/u581.jpg"  width="200" height="200"/>
+</p>
+
+  - Test dataset - set5 dataset (https://figshare.com/articles/dataset/BSD100_Set5_Set14_Urban100/21586188)
+
+: Set5는 많은 연구에서 사용되는 표준 데이터셋이기 때문에, 새로운 알고리즘의 성능을 이전의 연구 결과와 직접 비교할 수 있다. 이는 연구자들이 자신들의 방법이 얼마나 효과적인지를 쉽게 평가하고 비교할 수 있게 해주는 역할로 썼기 때문에, 마찬가지로 프로젝트에서 사용한 VDSR의 성능의 수준을 확인하고자 set5 dataset을 선택했다.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Test_dataset/baby_GT.bmp"  width="200" height="200"/>
+</p>
+
+***
+### VDSR(Very Deep Super-Resolution) 설명
+- Super Resolution의 종류 중 VDSR은 20개의 깊은 신경망 레이어를 사용하여 저해상도 이미지를 고해상도로 변환하는 알고리즘이다. 잔차 학습(Residual Learning)을 통해 빠르고 효율적으로 고품질의 이미지를 복원할 수 있는 모델이다.
+
+- VDSR은 20개의 레이어로 구성된 깊은 신경망을 사용하기 때문에 더 복잡하고 섬세한 특징들을 학습할 수 있게 하여 고해상도 이미지를 더 정교하게 복원할 수 있으며, 잔차 학습을 활용하여 기울기 소실 문제를 해결한다는 장점이있다. 또한 SRCNN이나 Resnet과 같은 모델보다도 가볍고 간단한 구조를 가지지만 높은 성능을 보이기 때문에 VDSR 모델을 선택하게 되었다.
+
+> ## <기존 VDSR 구조 >
+> <p align="center">
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Introduction/VDSR_1.png"  width="600" height="350"/>
+</p>
+
+> ## <개선 한 VDSR 구조>
+> > <p align="center">
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Introduction/VDSR_0.png"  width="600" height="350"/>
+</p>
+
+***
+  
+## 실험 결과
+<첫 번째 실험> 
+- Repeat num(residual 반복 횟수)를 정하여 12번,18번,24번,30번 반복하였을 때 가장 성능이 좋은 모델을 선택
+- NationalGEO Validation일 때 세 실험 중 가장 낮은 PSNR 수치를 가짐 
+
+  - ↓ National_GEO Validation ↓
+
+|Scale| Bicubic  PSNR|VDSR PSNR|VDSR-Bicubic|
+| ------------ |:---------------------:| ---------:|------------:|
+| 2x | 34.4860 | 29.9504 | -4.5356 |
+| 3x | 31.3486 | 28.4402  | -2.9084 |
+| 4x | 29.1305 | 28.759530 | -0.3709 |
+
+<img src="https://raw.githubusercontent.com/dabin0701/VDSR_API/main/Introduction/1788.jpg"  width="200" height="200"/>
+
+- Flower Validation으로 data set을 변경했을 때의 결과는 매우 개선 됨
+- 낮은 성능의 원인 :Train data로 학습한 이미지와(꽃과 자연) Validation data의(동물과 인물) 이미지의 결이 맞지 않았기 때문
 - 하지만 해당 모델은 loss가 238.519로 매우 높고, 4배일 때의 성능이 -(마이너스)이이기 때문에 좋은 모델은 아니라 판단
   - ↓ Flower Validation ↓
 
