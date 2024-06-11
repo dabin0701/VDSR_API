@@ -30,19 +30,17 @@ VDSR 모델 구현을 위해 ‘twtygqyy’가 구현한 코드를 불러왔고,
 
 ***
 ### Data set 출처 및 설명
-Train dataset - T91 dataset(https://www.kaggle.com/datasets/ll01dm/t91-image-dataset)
+- Train dataset - T91 dataset(https://www.kaggle.com/datasets/ll01dm/t91-image-dataset)
 
 : 해당 이미지는 초해상도를 위해 신경망을 훈련하는 데 일반적으로 사용되는 91개의 꽃 이미지로 대부분의 이미지는 잘린 꽃 이미지다. 해당 data set을 선택한 이유는 잘린 이미지가 다양한 크기, 비율, 위치에서 추출되었기 때문에 원본 이미지에서 얻을 수 있는 다양한 시각적 패턴을 제공하기 때문에 모델이 다양한 상황에서 고해상도 이미지를 복원하는 능력을 향상시키는 데 도움을 줄 것이라 예측하여 T91 data set을 선택하게 되었다.
 
 ![image](lob/main//Introduction/VDSR_1.png) -> 이미지 넣기
 
-Validation dataset - NationalgeoGraphic(https://www.youtube.com/@NatGeo/videos)
-
+- Validation dataset - NationalgeoGraphic(https://www.youtube.com/@NatGeo/videos)
 : 해당 데이터 셋은 Nationageograpich에서 제공하는 꽃이 개화하는 영상이다. Train dataset이 꽃이기 때문에 모델의 학습 효과를 확인하기 위해 Validation data set을 꽃으로 선택했다.
 
-Test dataset - set5 dataset (https://figshare.com/articles/dataset/BSD100_Set5_Set14_Urban100/21586188)
-
-: Set5는 많은 연구에서 사용되는 표준 데이터셋이기 때문에, 새로운 알고리즘의 성능을 이전의 연구 결과와 직접 비교할 수 있다. 이는 연구자들이 자신들의 방법이 얼마나 효과적인지를 쉽게 평가하고 비교할 수 있게 해주는 역할로 썼기 때문에, 마찬가지로 프로젝트에서 사용한 VDSR의 성능의 수준을 확인하고자 set5 dataset을 선택하였다.
+- Test dataset - set5 dataset (https://figshare.com/articles/dataset/BSD100_Set5_Set14_Urban100/21586188)
+: Set5는 많은 연구에서 사용되는 표준 데이터셋이기 때문에, 새로운 알고리즘의 성능을 이전의 연구 결과와 직접 비교할 수 있다. 이는 연구자들이 자신들의 방법이 얼마나 효과적인지를 쉽게 평가하고 비교할 수 있게 해주는 역할로 썼기 때문에, 마찬가지로 프로젝트에서 사용한 VDSR의 성능의 수준을 확인하고자 set5 dataset을 선택했다.
 
 ***
 ### 모델 설명 및 선택 이유
