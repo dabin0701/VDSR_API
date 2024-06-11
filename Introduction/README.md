@@ -87,7 +87,7 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 
   - ↓ National_GEO Validation ↓
   
-|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+|Scale| Bicubic  PSNR|VDSR PSNR|VDSR-Bicubic|
 | ------------ |:---------------------:| ---------:|------------:|
 | 2x | 34.4860 | 29.9504 | -4.5356 |
 | 3x | 31.3486 | 28.4402  | -2.9084 |
@@ -100,7 +100,7 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 - 하지만 해당 모델은 loss가 238.519로 매우 높고, 4배일 때의 성능이 -(마이너스)이이기 때문에 좋은 모델은 아니라 판단
   - ↓ Flower Validation ↓
 
-|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+|Scale| Bicubic  PSNR|VDSR PSNR|VDSR-Bicubic|
 | ------------ |:---------------------:| ---------:|------------:|
 | 2x | 34.4860 | 37.38969 | 2.99713 |
 | 3x | 31.3486 | 32.2266 | 0.8780 |
@@ -115,7 +115,7 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 
   - ↓ Flower Validation ↓
   
-|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+|Scale| Bicubic  PSNR|VDSR PSNR|VDSR-Bicubic|
 | ------------ |:---------------------:| ---------:|------------:|
 | 2x | 34.4860 | 35.3869 | 0.90097 |
 | 3x | 31.3486 | 30.13440 | -1.21422 |
@@ -127,7 +127,7 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 
   - ↓ Flower Validation ↓
 
-|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+|Scale| Bicubic  PSNR|VDSR PSNR|VDSR-Bicubic|
 | ------------ |:---------------------:| ---------:|------------:|
 | 2x | 34.4860 | 36.1943 | 1.7083 |
 | 3x | 31.3486 | 31.994 | 0.645645 |
@@ -146,7 +146,7 @@ VDSR을 구현하는 세 개의 실험을 통해 가장 높은 성능을 나타�
 ## RESULT
 가장 높은 성능을 나타낸 3번 모델을 Test set 'Set5'에 적용하여 최종 성능을 확인했다.
 
-|Scale| Bicubi  PSNR|VDSR PSNR|VDSR-Bicubic|
+|Scale| Bicubic  PSNR|VDSR PSNR|VDSR-Bicubic|
 | ------------ |:---------------------:| ---------:|------------:|
 | 2x | 33.690 | 35.457 | 1.767 |
 | 3x | 30.407 | 32.446 | 2.039 |
